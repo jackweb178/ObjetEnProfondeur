@@ -3,15 +3,26 @@
 
 class MaClasse
 {
-    public $attribut1;
-    public $attribut2;
-}
-$a=new MaClasse();// $a contient lidentifiant de lobjet creer et non l'objet lui meme
-//var_dump($a);
-$b=$a;
-//var_dump($b);
-$a->attribut1="hello <br/>";
-echo  $b->attribut1 ;
+    //https://openclassrooms.com/fr/courses/1665806-programmez-en-oriente-objet-en-php/1667055-les-objets-en-profondeur#/id/r-1670283
+    private static $instance =0;
 
-$b->attribut2="Salut";
-echo $a->attribut2;
+    public function __construct()
+    {
+        self::$instance++;
+    }
+
+    public function __clone()
+    {
+        self::$instance++;
+    }
+
+    public static function getInstance(){
+        return self::$instance;
+    }
+}
+
+$a =new MaClasse();
+
+$b= clone $a;
+
+echo 'Le nombre dinstance est de  : ',MaClasse::getInstance();
