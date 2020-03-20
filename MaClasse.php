@@ -22,7 +22,7 @@ class MaClasse
 }
 
 $a =new MaClasse();
-
+echo 'Le nombre dinstance est de  : ',MaClasse::getInstance(),'<br/>';// affiche 1
 $b= clone $a;
 
-echo 'Le nombre dinstance est de  : ',MaClasse::getInstance();
+echo 'Le nombre dinstance est de  : ',MaClasse::getInstance();// affiche 2
